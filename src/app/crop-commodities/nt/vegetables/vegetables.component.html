@@ -1,0 +1,16 @@
+<div>
+  <p (click)="toggle()">
+      <i class="far fa-plus-square" *ngIf="!show"></i>
+      <i class="far fa-minus-square" *ngIf="show"></i>
+      &nbsp;
+    <i class="fas fa-folder" *ngIf="!show"></i>
+    <i class="fas fa-folder-open" *ngIf="show"></i>
+    Vegetables
+  </p>
+  </div>
+<div *ngIf="show" style="padding-left:5%"> 
+<app-bt-child></app-bt-child>
+<app-rt></app-rt>
+<app-nt-child></app-nt-child>
+<app-uf></app-uf>
+</div>

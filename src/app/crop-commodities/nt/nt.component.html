@@ -1,0 +1,20 @@
+<div>
+    <p (click)="toggle()">
+        <i class="far fa-plus-square" *ngIf="!show"></i>
+        <i class="far fa-minus-square" *ngIf="show"></i>
+        &nbsp;
+    <i class="fas fa-folder" *ngIf="!show"></i>
+    <i class="fas fa-folder-open" *ngIf="show"></i>
+      NT
+    </p>
+    </div>
+<div *ngIf="show" style="padding-left: 5%"> 
+<app-fruit></app-fruit>
+<app-herbsandspices></app-herbsandspices>
+<app-grasses></app-grasses>
+<app-nutsandseeds></app-nutsandseeds>
+<app-vegetables></app-vegetables>
+<app-processingcrop></app-processingcrop>
+<app-foodscrops></app-foodscrops>
+<app-stalkandstemcrop></app-stalkandstemcrop>
+</div>

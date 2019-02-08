@@ -1,0 +1,14 @@
+<h1 style="text-align:center">Molecular Connection Project</h1>
+<div style="padding:7%">
+<p (click)="toggle()">
+    <i class="far fa-plus-square" *ngIf="!show"></i>
+    <i class="far fa-minus-square" *ngIf="show"></i> &nbsp;
+    <i class="fas fa-folder" *ngIf="!show"></i>
+    <i class="fas fa-folder-open" *ngIf="show"></i>
+  Crop commodities
+</p>
+<div *ngIf="show" style="padding-left: 5%"> 
+<app-bt></app-bt>
+<app-nt></app-nt>
+</div>
+</div>
