@@ -1,14 +1,52 @@
-<h1 style="text-align:center">Molecular Connection Project</h1>
-<div style="padding:7%">
-<p (click)="toggle()">
-    <i class="far fa-plus-square" *ngIf="!show"></i>
-    <i class="far fa-minus-square" *ngIf="show"></i> &nbsp;
-    <i class="fas fa-folder" *ngIf="!show"></i>
-    <i class="fas fa-folder-open" *ngIf="show"></i>
-  Crop commodities
-</p>
-<div *ngIf="show" style="padding-left: 5%"> 
-<app-bt></app-bt>
-<app-nt></app-nt>
-</div>
+
+<div>
+  <div *ngFor="let commodities of commodities;let i = index">
+    <div>
+        <i  class="far fa-minus-square"  *ngIf = "!commodities.child" (click)="openCommodities(i)"></i>
+        <i class="far fa-plus-square" *ngIf = "commodities.child" (click)="openCommodities(i)"></i> 
+        <i class="fas fa-folder" *ngIf = "commodities.child" (click)="openCommodities(i)"></i>
+        <i class="fas fa-folder-open" *ngIf = "!commodities.child" (click)="openCommodities(i)"></i>
+        {{commodities.name}} 
+    <div [hidden] = "commodities.child" *ngFor="let children of commodities.children;let j = index" style="padding-left: 2%">
+      <div>
+        <i class="far fa-minus-square" *ngIf = "!children.child" (click)="openChildren(i,j)"></i>
+        <i class="far fa-plus-square"  *ngIf = "children.child" (click)="openChildren(i,j)"></i> 
+        <i class="fas fa-folder" *ngIf = "children.child" (click)="openChildren(i,j)"></i>
+        <i class="fas fa-folder-open" *ngIf = "!children.child" (click)="openChildren(i,j)"></i>
+        {{children.name}}</div>
+      <div *ngFor="let termsrelation of commodities.termsrelation" style="padding-left: 2%">
+        <div *ngIf="children.name == termsrelation.rel">
+      <div [hidden] = "children.child" *ngFor="let terms of termsrelation.terms;let i = index">
+          <!-- <div> 
+              <i class="far fa-plus-square" *ngIf="!terms.child"></i>
+              <i class="far fa-minus-square" *ngIf="terms.child"></i> 
+              <i class="fas fa-folder" *ngIf = "!terms.child" ></i>
+              <i class="fas fa-folder-open" *ngIf = "terms.child"></i>
+            {{terms.name}}</div> -->
+        <div *ngFor = "let relation of relation;let i = index" style="padding-left: 2%">
+          <div *ngIf="terms.name == relation.name">
+              <div> 
+                  <i class="far fa-plus-square" *ngIf="relation.child" (click)="openChild(i)"></i>
+                  <i class="far fa-minus-square" *ngIf="!relation.child" (click)="openChild(i)"></i> 
+                  <i class="fas fa-folder" *ngIf = "relation.child" (click)="openChild(i)"></i>
+                  <i class="fas fa-folder-open" *ngIf = "!relation.child" (click)="openChild(i)"></i>
+                {{terms.name}}</div>
+
+            <div *ngFor = "let termsrelation of relation.termsrelation;let index = index" style="padding-left: 2%" [hidden]="relation.child">              
+              <div>
+                  <i class="far fa-plus-square" *ngIf="!relation.child" ></i>
+                  <i class="far fa-minus-square" *ngIf="relation.child"  ></i>
+                  <i class="fas fa-folder" *ngIf="!relation.child" ></i>
+                  <i class="fas fa-folder-open" *ngIf="relation.child"></i>
+                {{termsrelation.rel}}</div>
+              <!-- <div *ngFor="let terms of termsrelation.terms" style="padding-left: 2%">
+                <div>{{terms.name}}</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
